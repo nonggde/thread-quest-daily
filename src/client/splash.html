@@ -1,32 +1,34 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="splash.css" />
+    <link rel="stylesheet" href="splash.css" />
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, user-scalable=0"
-    />
-    <title>devvit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Thread Quest Daily</title>
   </head>
-  <body class="app">
-    <img class="snoo" src="/snoo.png" alt="Snoo" />
-    <div class="content">
-      <h1 class="title" id="title"></h1>
-      <p class="description">
-        Edit <span class="code">src/client/splash.ts</span> to get started.
-      </p>
-    </div>
-    <div>
-      <button class="start-button" id="start-button">Start</button>
-    </div>
-    <footer class="footer">
-      <div class="docs-link" tabindex="0" id="docs-link">Docs</div>
-      <span class="divider">|</span>
-      <div class="docs-link" tabindex="0" id="playtest-link">r/Devvit</div>
-      <span class="divider">|</span>
-      <div class="docs-link" tabindex="0" id="discord-link">Discord</div>
-    </footer>
+  <body>
+    <main class="quest-card">
+      <div class="brand-row">
+        <img class="signal-mark" src="/assets/signal-mark.svg" alt="" />
+        <div>
+          <p class="kicker">TODAY'S COMMUNITY EXPEDITION</p>
+          <h1>Thread Quest</h1>
+        </div>
+      </div>
+      <div class="route-preview" aria-hidden="true">
+        <span class="node start"></span><span class="line one"></span><span class="node relay"></span>
+        <span class="line two"></span><span class="node beacon"></span><span class="line three"></span>
+        <span class="node gate"></span>
+      </div>
+      <p class="mission">Light two beacons. Reach the north gate. Add your best route to the thread.</p>
+      <div class="stats" aria-live="polite">
+        <div><strong id="community-score">--</strong><span>COMMUNITY SIGNAL</span></div>
+        <div><strong id="run-count">--</strong><span>EXPLORERS</span></div>
+        <div><strong>75s</strong><span>DAILY RUN</span></div>
+      </div>
+      <button id="start-button" type="button">ENTER TODAY'S MAP</button>
+      <p class="player" id="player-name"></p>
+    </main>
     <script type="module" src="splash.ts" defer></script>
   </body>
 </html>

@@ -4,18 +4,40 @@
 
 - Name: `Thread Quest Daily`
 - Repository: https://github.com/nonggde/thread-quest-daily
+- App listing: https://developers.reddit.com/apps/thread-quest-daily
+- Public community: https://www.reddit.com/r/threadquestdaily
+- Public demo post: pending community creation
 - Hackathon: https://redditgameswithahook.devpost.com/
 - Deadline: July 15, 2026 at 6:00 PM PDT
 
 ## Concept
 
-Thread Quest Daily is a daily cooperative map game for a subreddit. Each redditor gets one daily action:
+Thread Quest Daily is a 75-second daily route puzzle inside a Reddit post. Every
+redditor receives the same deterministic 7x8 map for the day and must:
 
-- `Explore`: reveal more fog.
-- `Bridge`: connect islands.
-- `Beacon`: guide late players.
+1. Spend limited energy to cross terrain.
+2. Light at least two of three beacons.
+3. Reach the north gate before time expires.
 
-The post shows the shared progress for the day, so the comment thread has a common state to react to. The loop is designed for Reddit retention: one post, one daily map, one choice per user, visible collective milestones, and a reason to return tomorrow.
+Terrain variety builds a combo, relay tiles restore energy, and a one-use
+Overcharge provides a strategic rescue. Each player's best score is saved for
+the day and contributes to a shared subreddit signal. Repeat runs are welcome,
+but only improvements increase the community total.
+
+## Hook
+
+The post is not a link to a game; it is the game. The inline feed card displays
+live community progress, while expanded mode provides the full Phaser run.
+Daily shared maps create route discussion and a reason to return the next day.
+
+## Technical Details
+
+- Devvit Web custom post with separate inline and expanded entrypoints
+- Phaser 4 responsive game client
+- Hono API in Devvit's serverless runtime
+- Devvit Redis for daily player bests and community totals
+- Deterministic daily seed based on post ID and UTC date
+- Server-side payload bounds and best-score delta accounting
 
 ## Verification
 
@@ -25,27 +47,16 @@ npm run lint
 npm run build
 ```
 
-All three passed locally after a clean dependency install.
+All three passed locally after a clean dependency install. A full mobile
+playthrough also completed successfully with a score of `3178`.
 
-## Remaining Account-Gated Steps
+## Submission Checklist
 
-1. Log into Reddit Developer CLI:
-   ```bash
-   npm run login
-   ```
-2. Playtest the app on Reddit:
-   ```bash
-   npm run dev
-   ```
-3. Upload the app:
-   ```bash
-   npm run deploy
-   ```
-4. Create a public test subreddit with fewer than 200 members.
-5. Install the app into that subreddit.
-6. Create a public demo post running the game.
-7. Submit on Devpost with:
-   - App listing: `https://developers.reddit.com/apps/<app-name>`
-   - Demo post: public subreddit post URL
-   - Repo: https://github.com/nonggde/thread-quest-daily
-   - Optional video under 1 minute
+- [x] Build the complete game loop.
+- [x] Verify desktop and mobile layouts.
+- [x] Upload Devvit app version `0.0.2`.
+- [x] Create a private playtest and complete a successful run.
+- [ ] Create public test community with fewer than 200 members.
+- [ ] Install app and verify the public playable post.
+- [ ] Push final source and documentation to GitHub.
+- [ ] Add public demo URL and submit the Devpost entry.

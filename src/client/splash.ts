@@ -1,30 +1,33 @@
-import { navigateTo, context, requestExpandedMode } from '@devvit/web/client';
+import { context, requestExpandedMode } from '@devvit/web/client';
 
-const docsLink = document.getElementById('docs-link') as HTMLDivElement;
-const playtestLink = document.getElementById('playtest-link') as HTMLDivElement;
-const discordLink = document.getElementById('discord-link') as HTMLDivElement;
-const startButton = document.getElementById('start-button') as HTMLButtonElement;
+const startButton = document.getElementById('start-button');
+const playerName = document.getElementById('player-name');
+const communityScore = document.getElementById('community-score');
+const runCount = document.getElementById('run-count');
 
-startButton.addEventListener('click', (e) => {
-  requestExpandedMode(e, 'game');
-});
-
-docsLink.addEventListener('click', () => {
-  navigateTo('https://developers.reddit.com/docs');
-});
-
-playtestLink.addEventListener('click', () => {
-  navigateTo('https://www.reddit.com/r/Devvit');
-});
-
-discordLink.addEventListener('click', () => {
-  navigateTo('https://discord.com/invite/R7yu2wh9Qz');
-});
-
-const titleElement = document.getElementById('title') as HTMLHeadingElement;
-
-function init() {
-  titleElement.textContent = `Hey ${context.username ?? 'user'} 👋`;
+if (startButton instanceof HTMLButtonElement) {
+  startButton.addEventListener('click', (event) => {
+    requestExpandedMode(event, 'game');
+  });
 }
 
-init();
+if (playerName) playerName.textContent = `Daily map ready for u/${context.username ?? 'explorer'}`;
+
+async function loadCommunity(): Promise<void> {
+  try {
+    const response = await fetch('/api/init');
+    if (!response.ok) return;
+    const data: unknown = await response.json();
+    if (typeof data !== 'object' || data === null) return;
+    const community = Reflect.get(data, 'community');
+    if (typeof community !== 'object' || community === null) return;
+    const score = Reflect.get(community, 'score');
+    const runs = Reflect.get(community, 'runs');
+    if (communityScore && typeof score === 'number') communityScore.textContent = String(score);
+    if (runCount && typeof runs === 'number') runCount.textContent = String(runs);
+  } catch {
+    // The expanded game provides an offline practice map if the feed request is unavailable.
+  }
+}
+
+void loadCommunity();

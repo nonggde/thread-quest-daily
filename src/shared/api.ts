@@ -1,11 +1,23 @@
-export type QuestAction = 'explore' | 'bridge' | 'beacon';
-
-export type QuestTotals = Record<QuestAction, number>;
-
-export type QuestMilestone = {
-  total: number;
+export type CommunityMilestone = {
+  level: number;
+  nextTarget: number;
+  progress: number;
   title: string;
   detail: string;
+};
+
+export type CommunityState = {
+  score: number;
+  runs: number;
+  beacons: number;
+  successes: number;
+  milestone: CommunityMilestone;
+};
+
+export type PlayerState = {
+  bestScore: number;
+  bestBeacons: number;
+  completed: boolean;
 };
 
 export type InitResponse = {
@@ -13,18 +25,20 @@ export type InitResponse = {
   postId: string;
   username: string;
   dayKey: string;
-  totals: QuestTotals;
-  playerChoice: QuestAction | null;
-  milestone: QuestMilestone;
+  seed: number;
+  community: CommunityState;
+  player: PlayerState;
 };
 
-export type VoteResponse = {
-  type: 'vote';
-  postId: string;
-  username: string;
-  action: QuestAction;
-  dayKey: string;
-  totals: QuestTotals;
-  playerChoice: QuestAction;
-  milestone: QuestMilestone;
+export type RunSubmission = {
+  score: number;
+  beacons: number;
+  steps: number;
+  completed: boolean;
+  durationMs: number;
+};
+
+export type RunResponse = Omit<InitResponse, 'type'> & {
+  type: 'run';
+  improved: boolean;
 };

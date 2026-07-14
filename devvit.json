@@ -20,23 +20,13 @@
   "menu": {
     "items": [
       {
-        "label": "Create a new post",
+        "label": "Create today's Thread Quest",
         "description": "Start a new Thread Quest daily map",
         "location": "subreddit",
         "forUserType": "moderator",
         "endpoint": "/internal/menu/post-create"
-      },
-      {
-        "label": "Create a Thread Quest post",
-        "description": "Create a daily cooperative map post",
-        "location": "subreddit",
-        "forUserType": "moderator",
-        "endpoint": "/internal/menu/example-form"
       }
     ]
-  },
-  "forms": {
-    "exampleForm": "/internal/form/example-submit"
   },
   "triggers": {
     "onAppInstall": "/internal/triggers/on-app-install"
@@ -44,5 +34,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch"
+  },
+  "dev": {
+    "subreddit": "threadquestdaily"
   }
 }

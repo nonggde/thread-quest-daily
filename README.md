@@ -1,50 +1,63 @@
 ## Thread Quest Daily
 
-Thread Quest Daily is a Reddit Devvit + Phaser prototype for Reddit's Games
-with a Hook Hackathon. It turns one interactive post into a daily cooperative
-map: each redditor gets one action for the day, and the shared map changes as
-the thread collectively chooses to explore, bridge, or light beacons.
+Thread Quest Daily is a 75-second route puzzle that runs inside a Reddit post.
+Every day brings a deterministic 7x8 expedition map. Players spend energy to
+cross terrain, light at least two beacons, and reach the north gate before time
+runs out. Route variety builds a combo, relay tiles restore energy, and a
+one-use Overcharge can rescue a run.
 
-The retention loop is intentionally Reddit-native:
+Each redditor keeps their best score for the day. Those personal bests add to a
+shared community signal stored in Devvit Redis, so every run moves the post
+toward a visible subreddit milestone.
 
-- a fresh daily map key,
-- one lightweight vote per user per day,
-- shared progress that makes late visitors understand the thread state,
-- visible collective milestones that invite comments and return visits.
+- App: https://developers.reddit.com/apps/thread-quest-daily
+- Repository: https://github.com/nonggde/thread-quest-daily
+- Built for: https://redditgameswithahook.devpost.com/
 
-## Devvit Phaser Starter Base
+## Why It Fits Reddit
 
-A starter to build web applications on Reddit's developer platform
+- The playable feed card shows live community score and run count.
+- The expanded view launches instantly from the post.
+- A daily seed gives everyone the same map and a reason to compare routes.
+- Only a player's improved score changes the shared total, preventing repeat-run inflation.
+- Installation creates the first playable post automatically; moderators can create more from the subreddit menu.
 
-- [Devvit](https://developers.reddit.com/): A way to build and deploy immersive games on Reddit
-- [Vite](https://vite.dev/): For compiling the webView
-- [Phaser](https://phaser.io/): 2D game engine
-- [Hono](https://hono.dev/): For backend logic
-- [TypeScript](https://www.typescriptlang.org/): For type safety
+## Architecture
 
-## Getting Started
+```mermaid
+flowchart LR
+  A[Reddit feed card] --> B[Expanded Phaser game]
+  B --> C[Devvit Hono API]
+  C --> D[(Devvit Redis)]
+  D --> C
+  C --> A
+  C --> B
+```
 
-> Make sure you have Node 22 downloaded on your machine before running!
+The client uses Phaser 4 and Vite. The Devvit Web server uses Hono and stores
+daily per-player bests plus aggregate community milestones in Redis.
 
-1. Run `npm create devvit@latest --template=phaser`
-2. Go through the installation wizard. You will need to create a Reddit account and connect it to Reddit developers
-3. Copy the command on the success page into your terminal
+## Local Development
+
+Node.js 22.2 or newer is required.
+
+```bash
+npm install
+npm run type-check
+npm run lint
+npm run build
+npm run dev
+```
 
 ## Commands
 
-- `npm run dev`: Starts a development server where you can develop your application live on Reddit.
-- `npm run build`: Builds your client and server projects
-- `npm run deploy`: Uploads a new version of your app
-- `npm run launch`: Publishes your app for review
-- `npm run login`: Logs your CLI into Reddit
-- `npm run type-check`: Type checks, lints, and prettifies your app
+- `npm run dev`: Starts a Devvit playtest.
+- `npm run build`: Builds the client and server bundles.
+- `npm run deploy`: Validates and uploads a new app version.
+- `npm run launch`: Uploads and submits an app version for review.
+- `npm run login`: Connects the Devvit CLI to Reddit.
 
-## Hackathon Submission Checklist
+## Submission
 
-- App listing: requires a Reddit Developer account and `devvit upload`.
-- Demo post: requires installing the app into a public test subreddit with fewer than 200 members.
-- Devpost submission: requires the app listing URL and public demo post URL.
-
-## Credits
-
-Thanks to the Phaser team for [providing a great template](https://github.com/phaserjs/template-vite-ts)!
+The uploaded Devvit app is `thread-quest-daily`. Public demo and Devpost links
+are recorded in `submission/reddit-games-submission.md` as they are finalized.
