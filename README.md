@@ -13,6 +13,7 @@ toward a visible subreddit milestone.
 - App: https://developers.reddit.com/apps/thread-quest-daily
 - Repository: https://github.com/nonggde/thread-quest-daily
 - Demo: https://www.reddit.com/r/thread_quest_dail_dev/comments/1uw5rza/thread_quest_daily_light_two_beacons_and_reach/
+- Devpost: https://devpost.com/software/thread-quest-daily
 - Built for: https://redditgameswithahook.devpost.com/
 
 ## Why It Fits Reddit

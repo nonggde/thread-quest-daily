@@ -8,6 +8,7 @@
 - Test community: https://www.reddit.com/r/thread_quest_dail_dev
 - Demo post: https://www.reddit.com/r/thread_quest_dail_dev/comments/1uw5rza/thread_quest_daily_light_two_beacons_and_reach/
 - Judge access: official `dr-admin-approve` app installed for Reddit administrators
+- Devpost submission: https://devpost.com/software/thread-quest-daily
 - Hackathon: https://redditgameswithahook.devpost.com/
 - Deadline: July 15, 2026 at 6:00 PM PDT
 
@@ -60,4 +61,4 @@ playthrough also completed successfully with a score of `3178`.
 - [x] Install `dr-admin-approve` so Reddit judges can access the private test community.
 - [x] Install app version `0.0.2` and verify the playable feed card.
 - [x] Push final source and documentation to GitHub.
-- [ ] Submit the final Devpost entry.
+- [x] Submit the final Devpost entry.
