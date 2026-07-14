@@ -36,6 +36,6 @@
     "dev": "vite build --watch"
   },
   "dev": {
-    "subreddit": "threadquestdaily"
+    "subreddit": "thread_quest_dail_dev"
   }
 }

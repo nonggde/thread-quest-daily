@@ -12,6 +12,7 @@ toward a visible subreddit milestone.
 
 - App: https://developers.reddit.com/apps/thread-quest-daily
 - Repository: https://github.com/nonggde/thread-quest-daily
+- Demo: https://www.reddit.com/r/thread_quest_dail_dev/comments/1uw5rza/thread_quest_daily_light_two_beacons_and_reach/
 - Built for: https://redditgameswithahook.devpost.com/
 
 ## Why It Fits Reddit
@@ -59,5 +60,7 @@ npm run dev
 
 ## Submission
 
-The uploaded Devvit app is `thread-quest-daily`. Public demo and Devpost links
-are recorded in `submission/reddit-games-submission.md` as they are finalized.
+The uploaded Devvit app is `thread-quest-daily`. Demo and Devpost links are
+recorded in `submission/reddit-games-submission.md`. The test subreddit is
+private and uses Reddit's official `dr-admin-approve` app for judge access, as
+allowed by the hackathon rules.

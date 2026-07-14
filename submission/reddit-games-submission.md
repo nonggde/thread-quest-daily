@@ -5,8 +5,9 @@
 - Name: `Thread Quest Daily`
 - Repository: https://github.com/nonggde/thread-quest-daily
 - App listing: https://developers.reddit.com/apps/thread-quest-daily
-- Public community: https://www.reddit.com/r/threadquestdaily
-- Public demo post: pending community creation
+- Test community: https://www.reddit.com/r/thread_quest_dail_dev
+- Demo post: https://www.reddit.com/r/thread_quest_dail_dev/comments/1uw5rza/thread_quest_daily_light_two_beacons_and_reach/
+- Judge access: official `dr-admin-approve` app installed for Reddit administrators
 - Hackathon: https://redditgameswithahook.devpost.com/
 - Deadline: July 15, 2026 at 6:00 PM PDT
 
@@ -56,7 +57,7 @@ playthrough also completed successfully with a score of `3178`.
 - [x] Verify desktop and mobile layouts.
 - [x] Upload Devvit app version `0.0.2`.
 - [x] Create a private playtest and complete a successful run.
-- [ ] Create public test community with fewer than 200 members.
-- [ ] Install app and verify the public playable post.
-- [ ] Push final source and documentation to GitHub.
-- [ ] Add public demo URL and submit the Devpost entry.
+- [x] Install `dr-admin-approve` so Reddit judges can access the private test community.
+- [x] Install app version `0.0.2` and verify the playable feed card.
+- [x] Push final source and documentation to GitHub.
+- [ ] Submit the final Devpost entry.
